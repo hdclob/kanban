@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  db:
+    container_name: kanbandb
+    image: mysql:5.7.32
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+    ports:
+      - 8890:3306
+  php:
+    container_name: kanbanphp
+    build: php8
+    volumes:
+      - ../:/var/www/html/
+    ports:
+      - 80:80
+  phpmyadmin:
+    container_name: kanbanphpmyadmin
+    image: phpmyadmin:5.2.1
+    restart: always
+    ports:
+      - 8081:80
+    environment:
+      PMA_HOST: db
