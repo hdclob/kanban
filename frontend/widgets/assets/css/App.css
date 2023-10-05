@@ -1,3 +1,9 @@
 .kanban-card {
 	cursor: pointer;
 }
+.kanban-board {
+	flex-wrap: nowrap !important;
+	overflow-x: auto;
+	height: 90vh;
+	background-color: lightgray;
+}

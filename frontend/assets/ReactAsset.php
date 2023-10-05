@@ -10,8 +10,10 @@ use yii\web\AssetBundle;
 class ReactAsset extends AssetBundle
 {
 	public $js = [
-		'https://unpkg.com/react@18.2.0/umd/react.production.min.js',
-		'https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js',
+		// 'https://unpkg.com/react@18.2.0/umd/react.production.min.js',
+		// 'https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js',
+		'https://unpkg.com/react@18/umd/react.development.js',
+		'https://unpkg.com/react-dom@18/umd/react-dom.development.js',
 		'https://unpkg.com/@babel/standalone/babel.min.js'
 	];
 	public $jsOptions = [

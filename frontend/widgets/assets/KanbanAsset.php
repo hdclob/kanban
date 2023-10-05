@@ -12,8 +12,9 @@ class KanbanAsset extends AssetBundle
 		'css/App.css'
 	];
 	public $js = [
-		'js/components/List.js',
+		'js/helpers/Helpers.js',
 		'js/components/Card.js',
+		'js/components/List.js',
 		'js/App.js'
 	];
 	public $depends = [
@@ -21,7 +22,9 @@ class KanbanAsset extends AssetBundle
 	];
 	public $jsOptions = [
 		'position' => \yii\web\View::POS_HEAD,
-		'type' => 'text/babel',
-
+		'data-plugins' => 'transform-modules-umd',
+		'data-presets' => 'react',
+		'data-type' => 'module',
+		'type' => 'text/babel'
 	];
 }

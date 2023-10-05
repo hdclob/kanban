@@ -1,4 +1,7 @@
-function List({ cards, setCards, title }) {
+import Card from "./Card";
+import Hlp from "./Helpers"
+
+export default function List({ listId, cards, setCards, title }) {
 	const [isTitleEditable, setIsTitleEditable] = React.useState(false);
 	const [isHovered, setIsHovered] = React.useState(false);
 
@@ -7,11 +10,19 @@ function List({ cards, setCards, title }) {
 	};
 
 	const addCard = () => {
-		const newCards = [
-			...cards,
-			{ title: "New Card" }
-		];
-		setCards(newCards);
+		const newCard = { title: "New Card" };
+		let formData = new FormData();
+		formData.append('card', JSON.stringify(newCard));
+		Hlp.fetch(`/frontend/web/kanban/add-card?list_id=${listId}`, {
+			method: 'POST',
+			body: formData
+		})
+			.then(resp => resp.json())
+			.then(resp => {
+				if (resp.card) {
+					setCards([...cards, resp.card]);
+				}
+			})
 	};
 
 	return (
@@ -36,7 +47,7 @@ function List({ cards, setCards, title }) {
 				</div>
 			))}
 			<div className="card-footer">
-				<a onClick={addCard} href="javascript:;">
+				<a onClick={addCard} href="#">
 					+ Add a new card
 				</a>
 			</div>

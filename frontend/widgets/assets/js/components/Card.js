@@ -1,4 +1,4 @@
-function Card({ title }) {
+export default function Card({ title }) {
 	return (
 		<div className="card kanban-card">
 			<div className="card-body">
